@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foodtruck.Negocio.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,25 @@ namespace Foodtruck.Grafico
         {
             ManterBebida tela = new ManterBebida();
             tela.MdiParent = this.MdiParent;
+            tela.FormClosed += Tela_FormClosed;
             tela.Show();
+        }
+
+        private void Tela_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            carregarBebidas();
+        }
+
+        private void carregarBebidas()
+        {
+            dgBebidas.AutoGenerateColumns = false;
+            List<Bebida> Bebidas = Program.Gerenciador.TodasAsBebidas();
+            dgBebidas.DataSource = Bebidas;
+        }
+
+        private void TelaListaBebidas_Load(object sender, EventArgs e)
+        {
+            carregarBebidas();
         }
     }
 }

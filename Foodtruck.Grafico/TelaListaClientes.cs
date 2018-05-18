@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Foodtruck.Negocio.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,30 @@ namespace Foodtruck.Grafico
         {
             ManterClientes tela = new ManterClientes();
             tela.MdiParent = this.MdiParent;
+            tela.FormClosed += Tela_FormClosed;
             tela.Show();
+        }
+
+        private void Tela_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            carregarClientes();
+        }
+
+        private void carregarClientes()
+        {
+            dgClientes.AutoGenerateColumns = false;
+            List<Cliente> Clientes = Program.Gerenciador.TodosOsClientes();
+            dgClientes.DataSource = Clientes;
+        }
+
+        private void TelaListaClientes_Load(object sender, EventArgs e)
+        {
+            carregarClientes();
+        }
+
+        private void dgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -50,8 +50,17 @@ namespace Foodtruck.Grafico
                 }
 
                 MessageBox.Show(mensagemValidacao);
+            } else
+            {
+                MessageBox.Show("Cadastro de bebida realizado com sucesso");
             }
-         
+
+            this.Close();
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

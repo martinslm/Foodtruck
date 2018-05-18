@@ -39,6 +39,17 @@ namespace Foodtruck.Grafico
 
                 MessageBox.Show(mensagemValidacao);
             }
+            else
+            {
+                MessageBox.Show("Lanche Cadastrado");
+            }
+
+            this.Close();
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
