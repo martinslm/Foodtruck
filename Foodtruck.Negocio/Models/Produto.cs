@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Foodtruck.Negocio.Models
 {
-    [Table(name: "Produtos")]
+    //[Table(name: "Produtos")]
     public abstract class Produto
     {
 

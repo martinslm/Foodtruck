@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Foodtruck.Negocio.Persistencia
 {
-    public class dados
+    public class Dados
     {
         public List<Cliente> Clientes;
         public List<Bebida> Bebidas;
