@@ -14,6 +14,7 @@ namespace Foodtruck.Grafico
 {
     public partial class ManterClientes : Form
     {
+        public Cliente ClienteSelecionado { get; set; }
         public ManterClientes()
         {
             InitializeComponent();
@@ -31,12 +32,28 @@ namespace Foodtruck.Grafico
 
         private void btSalvar_Click(object sender, EventArgs e)
         {
-            Cliente novoCliente = new Cliente();
-            novoCliente.Id = Convert.ToInt64(tbId.Text);
-            novoCliente.Nome = tbNome.Text;
-            novoCliente.Email = tbEmail.Text;
-            novoCliente.CPF = tbCPF.Text;
-            Validacao validacao = Program.Gerenciador.AdicionarCliente(novoCliente);
+            Cliente cliente = new Cliente();
+            if(Int64.TryParse(tbId.Text, out long value))
+            {
+                cliente.Id = value;
+            }
+            else
+            {
+                cliente.Id = -1;
+            }
+            cliente.Id = Convert.ToInt64(tbId.Text);
+            cliente.Nome = tbNome.Text;
+            cliente.Email = tbEmail.Text;
+            cliente.CPF = tbCPF.Text;
+            Validacao validacao;
+            if (ClienteSelecionado == null)
+            {
+                validacao = Program.Gerenciador.AdicionarCliente(cliente);
+            }
+            else
+            {
+                validacao = Program.Gerenciador.AlterarCliente(cliente);
+            }            
 
             if(!validacao.Valido)
             {
@@ -52,7 +69,7 @@ namespace Foodtruck.Grafico
 
             else
             {
-                MessageBox.Show("Cadastro de cliente realizado com sucesso");
+                MessageBox.Show("Cliente salvo com sucesso");
             }
 
             this.Close();
@@ -61,6 +78,19 @@ namespace Foodtruck.Grafico
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ManterClientes_Shown(object sender, EventArgs e)
+        {
+            if(ClienteSelecionado != null)
+            {
+                this.tbId.Text = ClienteSelecionado.Id.ToString();
+                this.tbNome.Text = ClienteSelecionado.Nome;
+                this.tbCPF.Text = ClienteSelecionado.CPF;
+                this.tbEmail.Text = ClienteSelecionado.Email;
+                
+
+            }
         }
     }
 }

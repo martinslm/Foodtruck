@@ -15,6 +15,13 @@ namespace Foodtruck.Negocio
         {
 
         }
+        public Validacao RemoverCliente(Cliente cliente)
+        {
+            Validacao validacao = new Validacao();
+            banco.Clientes.Remove(cliente);
+            banco.SaveChanges();
+            return validacao;
+        }
 
         public Validacao AdicionarCliente(Cliente ClienteAdicionado)
         {
@@ -39,11 +46,20 @@ namespace Foodtruck.Negocio
             if (validacao.Valido)
             {
                 this.banco.Clientes.Add(ClienteAdicionado);
-                this.banco.SalvarDados();
+                this.banco.SaveChanges();
             }
             return validacao;
         }
-
+        public Validacao AlterarCliente(Cliente clienteAlterado)
+        {
+            Validacao validacao = new Validacao();
+            Cliente clienteBanco = BuscaClientePorID(clienteAlterado.Id);
+            clienteBanco.Nome = clienteAlterado.Nome;
+            clienteBanco.CPF = clienteAlterado.CPF;
+            clienteBanco.Email = clienteAlterado.Email;
+            this.banco.SaveChanges();
+            return validacao;
+        }
         public Validacao AdicionarLanche(Lanche LancheAdicionado)
         {
             Validacao validacao = new Validacao();
@@ -65,7 +81,7 @@ namespace Foodtruck.Negocio
             if (validacao.Valido)
             {
                 this.banco.Lanches.Add(LancheAdicionado);
-                this.banco.SalvarDados();
+                this.banco.SaveChanges();
             }
             return validacao;
         }
@@ -97,7 +113,7 @@ namespace Foodtruck.Negocio
             if (validacao.Valido)
             {
                 this.banco.Bebidas.Add(BebidaAdicionada);
-                this.banco.SalvarDados();
+                this.banco.SaveChanges();
             }
                 return validacao;
         }
@@ -107,6 +123,10 @@ namespace Foodtruck.Negocio
             this.banco.Pedidos.Add(PedidoAdicionado);
         }
 
+        public Cliente BuscaClientePorID(long id)
+        {
+            return this.banco.Clientes.Where(c => c.Id == id).FirstOrDefault();
+        }
         public List<Cliente> TodosOsClientes()
         {
             return this.banco.Clientes.ToList();
