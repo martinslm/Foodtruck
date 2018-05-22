@@ -69,7 +69,7 @@ namespace Foodtruck.Grafico
 
         }
 
-        private void btRemover_Click(object sender, EventArgs e)
+        private void btRemover_Click_1(object sender, EventArgs e)
         {
             if (VerificarSelecao())
             {
@@ -93,7 +93,7 @@ namespace Foodtruck.Grafico
             }
         }
 
-        private void btAlterar_Click(object sender, EventArgs e)
+        private void btAlterar_Click_1(object sender, EventArgs e)
         {
             if (VerificarSelecao())
             {

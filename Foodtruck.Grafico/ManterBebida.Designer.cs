@@ -100,7 +100,7 @@
             // 
             // tbId
             // 
-            this.tbId.Location = new System.Drawing.Point(61, 24);
+            this.tbId.Location = new System.Drawing.Point(57, 24);
             this.tbId.Name = "tbId";
             this.tbId.Size = new System.Drawing.Size(114, 20);
             this.tbId.TabIndex = 7;
