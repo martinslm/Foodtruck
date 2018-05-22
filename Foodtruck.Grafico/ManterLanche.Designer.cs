@@ -121,6 +121,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ManterLanche";
             this.Text = "ManterLanche";
+            this.Load += new System.EventHandler(this.ManterLanche_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

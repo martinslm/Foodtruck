@@ -11,14 +11,14 @@ namespace Foodtruck.Negocio.Models
     public abstract class Produto
     {
 
-        public long id { get; set; }
+        public long Id { get; set; }
         public String Nome { get; set; }
         public Decimal Valor { get; set; }
         public virtual List<Pedido> Pedidos { get; set; }
 
         public virtual String Descrever()
         {
-            return String.Format($"{this.id} - {this.Nome} - {this.Valor}");
+            return String.Format($"{this.Id} - {this.Nome} - {this.Valor}");
         }
     }
 }
