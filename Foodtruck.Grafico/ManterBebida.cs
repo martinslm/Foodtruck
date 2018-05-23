@@ -39,14 +39,14 @@ namespace Foodtruck.Grafico
                 novaBebida.Id = value;
             }
             else
-            {
-                novaBebida.Id = -1;
+           {
+               novaBebida.Id = -1;
             }
             novaBebida.Id = Convert.ToInt64(tbId.Text);
             novaBebida.Nome = tbNome.Text;
             novaBebida.Tamanho = Convert.ToInt64(tbTamanho.Text);
             novaBebida.Valor = Convert.ToInt64(tbValor.Text);
-            Validacao validacao = Program.Gerenciador.AdicionarBebida(novaBebida);
+            Validacao validacao;
             if (BebidaSelecionada == null)
             {
                 validacao = Program.Gerenciador.AdicionarBebida(novaBebida);
@@ -79,7 +79,8 @@ namespace Foodtruck.Grafico
         {
             this.Close();
         }
-        private void ManterBebida_Shown(object sender, EventArgs e)
+
+        private void ManterBebidas_Shown(object sender, EventArgs e)
         {
             if (BebidaSelecionada != null)
             {

@@ -122,6 +122,7 @@
             this.Name = "ManterLanche";
             this.Text = "ManterLanche";
             this.Load += new System.EventHandler(this.ManterLanche_Load);
+            this.Shown += new System.EventHandler(this.ManterLanche_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

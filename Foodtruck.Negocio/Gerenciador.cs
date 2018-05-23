@@ -13,12 +13,13 @@ namespace Foodtruck.Negocio
         private Banco banco = new Banco(); 
         public Gerenciador()
         {
-
+            Console.WriteLine(banco.Database.Connection.ConnectionString);
         }
         //Cliente
         public Validacao AdicionarCliente(Cliente ClienteAdicionado)
         {
             Validacao validacao = new Validacao();
+
             if(this.banco.Clientes.Where(c =>c.Id == ClienteAdicionado.Id).Any())
             {
                 validacao.Mensagens.Add("Id", "Já existe um cliente com este ID");
@@ -77,7 +78,7 @@ namespace Foodtruck.Negocio
             {
                 validacao.Mensagens.Add("Valor","O valor do lanche não pode ser zerado ou negativo");
             }
-            if (this.banco.Lanches.Where(c => c.Id == LancheAdicionado.Id).Any())
+            if (this.banco.Lanches.Where(c => c.Id == LancheAdicionado.Id).Count()>0)
             {
                 validacao.Mensagens.Add("Id", "Já existe um lanche com este ID");
             }
@@ -112,7 +113,9 @@ namespace Foodtruck.Negocio
         public Validacao AdicionarBebida(Bebida BebidaAdicionada)
         {
             Validacao validacao = new Validacao();
-            if (this.banco.Bebidas.Where(c => c.Id == BebidaAdicionada.Id).Any())
+
+  
+            if (this.banco.Bebidas.Where(c => c.Id == BebidaAdicionada.Id).Count()>0)
             {
                 validacao.Mensagens.Add("Id", "Já existe uma Bebida com este ID");
             }
