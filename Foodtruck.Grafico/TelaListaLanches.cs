@@ -103,5 +103,10 @@ namespace Foodtruck.Grafico
             }
 
         }
+
+        private void dgLanches_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

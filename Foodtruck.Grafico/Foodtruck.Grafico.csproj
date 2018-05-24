@@ -114,6 +114,9 @@
     <EmbeddedResource Include="AdicionarPedido.resx">
       <DependentUpon>AdicionarPedido.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListaPedidos.resx">
+      <DependentUpon>ListaPedidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManterBebida.resx">
       <DependentUpon>ManterBebida.cs</DependentUpon>
     </EmbeddedResource>

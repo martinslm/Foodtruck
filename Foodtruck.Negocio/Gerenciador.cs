@@ -162,9 +162,48 @@ namespace Foodtruck.Negocio
         }
         //Bebida
         /*-----------------*/
-        public void AdicionarPedido (Pedido PedidoAdicionado)
+        //Pedido
+        public Validacao AdicionarPedido (Pedido PedidoAdicionado)
         {
+            Validacao validacao = new Validacao();
+
+            if (string.IsNullOrEmpty(Convert.ToString(PedidoAdicionado.DataCompra)))
+            {
+                validacao.Mensagens.Add("datacompra", "O campo data não pode ser nulo ou vazío");
+            }
+
+            if (!(this.banco.Clientes.Where(x => x.Id == PedidoAdicionado.Cliente.Id).Any()))
+            {
+                validacao.Mensagens.Add("cliente", "Não existe nenhum cliente cadastrado com esse código idenfiticador");
+            }
+
+            foreach (Lanche lanche in PedidoAdicionado.Lanches)
+            {
+                if (!(this.banco.Lanches.Where(x => x.Id == lanche.Id).Any()))
+                {
+                    validacao.Mensagens.Add("lanche", "$Não existe nenhum lanche cadastrado em um dos códigos informados");
+                }
+            }
+
+            foreach (Bebida bebida in PedidoAdicionado.Bebidas)
+            {
+                if (!(this.banco.Bebidas.Where(x => x.Id == bebida.Id).Any()))
+                {
+                    validacao.Mensagens.Add("bebida", "$Não existe nenhuma bebida cadastrada em um dos códigos informados");
+                }
+            }
+
             this.banco.Pedidos.Add(PedidoAdicionado);
+            this.banco.SaveChanges();
+
+            return validacao;
+        }
+        public Validacao RemoverPedido (Pedido Pedido)
+        {
+            Validacao validacao = new Validacao();
+            banco.Pedidos.Remove(Pedido);
+            banco.SaveChanges();
+            return validacao;
         }
 
         public Cliente BuscaClientePorID(long id)
@@ -192,6 +231,11 @@ namespace Foodtruck.Negocio
         public List<Bebida> TodasAsBebidas()
         {
             return this.banco.Bebidas.ToList();
+        }
+
+        public List<Pedido> TodosOsPedidos()
+        {
+            return this.banco.Pedidos.ToList();
         }
     }
 }

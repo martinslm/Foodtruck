@@ -79,6 +79,7 @@
             this.dgLanches.Name = "dgLanches";
             this.dgLanches.Size = new System.Drawing.Size(370, 207);
             this.dgLanches.TabIndex = 3;
+            this.dgLanches.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLanches_CellContentClick_1);
             // 
             // Id
             // 

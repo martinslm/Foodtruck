@@ -14,7 +14,7 @@ namespace Foodtruck.Negocio.Models
         public long Id { get; set; }
         public String Nome { get; set; }
         public Decimal Valor { get; set; }
-        public virtual List<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
         public virtual String Descrever()
         {

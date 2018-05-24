@@ -1,4 +1,5 @@
-﻿using Foodtruck.Negocio.Models;
+﻿using Foodtruck.Negocio;
+using Foodtruck.Negocio.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,6 +78,27 @@ namespace Foodtruck.Grafico
 
         private void Cancelar_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void btSalvar_Click(object sender, EventArgs e)
+        {
+            pedido.Cliente = cbClientes.SelectedItem as Cliente;
+            pedido.DataCompra = DateTime.Now;
+            Validacao validacao = Program.Gerenciador.AdicionarPedido(pedido);
+            if(validacao.Valido)
+            {
+                MessageBox.Show("Pedido cadastrado com sucesso");
+            }
+            else
+            {
+                String msg = "";
+                foreach (var mensagem in validacao.Mensagens)
+                {
+                    msg += mensagem + Environment.NewLine;
+                }
+                MessageBox.Show(msg);
+            }
             this.Close();
         }
     }
