@@ -14,6 +14,7 @@ namespace Foodtruck.Grafico
 {
     public partial class AdicionarPedido : Form
     {
+        public Pedido PedidoSelecionado { get; set; }
         Pedido pedido = new Pedido();
 
         public AdicionarPedido()
@@ -69,7 +70,7 @@ namespace Foodtruck.Grafico
 
         private void carregaTotal()
         {
-            ValorTotal.Text = pedido.ValorTotal().ToString();
+            ValorTotal.Text = pedido.ValorTotal.ToString();
         }
         private void label4_Click(object sender, EventArgs e)
         {
@@ -85,8 +86,17 @@ namespace Foodtruck.Grafico
         {
             pedido.Cliente = cbClientes.SelectedItem as Cliente;
             pedido.DataCompra = DateTime.Now;
-            Validacao validacao = Program.Gerenciador.AdicionarPedido(pedido);
-            if(validacao.Valido)
+            Validacao validacao;
+
+            if (PedidoSelecionado == null)
+            {
+                validacao = Program.Gerenciador.AdicionarPedido(pedido);
+            }
+            else
+            {
+                validacao = Program.Gerenciador.AlterarPedido(pedido);
+            }
+            if (validacao.Valido)
             {
                 MessageBox.Show("Pedido cadastrado com sucesso");
             }
@@ -100,6 +110,16 @@ namespace Foodtruck.Grafico
                 MessageBox.Show(msg);
             }
             this.Close();
+        }
+
+        private void AdicionarPedido_Shown(object sender, EventArgs e)
+        {
+            if(PedidoSelecionado != null)
+            {
+               this.cbClientes.SelectedItem = PedidoSelecionado.Cliente;
+               this.dgBebidas.DataSource = PedidoSelecionado.Bebidas.ToList();
+                this.dgLanches.DataSource = PedidoSelecionado.Lanches.ToList();
+            }
         }
     }
 }

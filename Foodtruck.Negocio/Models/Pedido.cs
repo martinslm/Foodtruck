@@ -23,12 +23,23 @@ namespace Foodtruck.Negocio.Models
             this.Bebidas = new List<Bebida>();
         }
 
-        public Decimal ValorTotal()
+        public Decimal ValorTotal
         {
-            decimal totalLanches = this.Lanches.Sum(m => m.Valor);
-            decimal totalBebidas = this.Bebidas.Sum(m => m.Valor);
-            return totalBebidas + totalLanches; 
+            get {
+                decimal totalLanches = this.Lanches.Sum(m => m.Valor);
+                decimal totalBebidas = this.Bebidas.Sum(m => m.Valor);
+                return totalBebidas + totalLanches;
+            }
 
+        }
+
+        [NotMapped]
+        public String NomeCliente
+        {
+            get
+            {
+                return Cliente.Nome;
+            }
         }
 
 

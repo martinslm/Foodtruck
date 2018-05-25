@@ -245,6 +245,7 @@
             this.Name = "AdicionarPedido";
             this.Text = "AdicionarPedido";
             this.Load += new System.EventHandler(this.AdicionarPedido_Load);
+            this.Shown += new System.EventHandler(this.AdicionarPedido_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgLanches)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgBebidas)).EndInit();
             this.ResumeLayout(false);
