@@ -50,6 +50,7 @@ namespace Foodtruck.Grafico
             dgBebidas.DataSource = pedido.Bebidas.ToList();
             dgLanches.AutoGenerateColumns = false;
             dgLanches.DataSource = pedido.Lanches.ToList();
+
         }
 
         private void btAddBebida_Click(object sender, EventArgs e)
@@ -119,6 +120,7 @@ namespace Foodtruck.Grafico
                this.cbClientes.SelectedItem = PedidoSelecionado.Cliente;
                this.dgBebidas.DataSource = PedidoSelecionado.Bebidas.ToList();
                 this.dgLanches.DataSource = PedidoSelecionado.Lanches.ToList();
+                pedido = PedidoSelecionado;
             }
         }
     }
