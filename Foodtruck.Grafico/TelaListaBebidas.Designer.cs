@@ -121,6 +121,7 @@
             this.Name = "TelaListaBebidas";
             this.Text = "TelaListaBebidas";
             this.Load += new System.EventHandler(this.TelaListaBebidas_Load);
+            this.Shown += new System.EventHandler(this.TelaListaBebidas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgBebidas)).EndInit();
             this.ResumeLayout(false);
 

@@ -111,6 +111,7 @@
             this.Name = "TelaListaLanches";
             this.Text = "TelaListaLanches";
             this.Load += new System.EventHandler(this.TelaListaLanches_Load);
+            this.Shown += new System.EventHandler(this.TelaListaLanches_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgLanches)).EndInit();
             this.ResumeLayout(false);
 

@@ -106,6 +106,7 @@
             this.Name = "ListaPedidos";
             this.Text = "ListaPedidos";
             this.Load += new System.EventHandler(this.ListaPedidos_Load);
+            this.Shown += new System.EventHandler(this.ListaPedidos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPedidos)).EndInit();
             this.ResumeLayout(false);
 

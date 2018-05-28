@@ -115,6 +115,7 @@
             this.Text = "TelaListaClientes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TelaListaClientes_Load);
+            this.Shown += new System.EventHandler(this.TelaListaClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgClientes)).EndInit();
             this.ResumeLayout(false);
 
