@@ -77,17 +77,21 @@ namespace Foodtruck.Grafico
                 if (resultado == DialogResult.OK)
                 {
                     Lanche lancheSelecionado = (Lanche)dgLanches.SelectedRows[0].DataBoundItem;
-                    var validacao = Program.Gerenciador.RemoverLanche(lancheSelecionado);
-                    if (validacao.Valido)
-                    {
-                        MessageBox.Show("Lanche removido com sucesso");
-                    }
+                    if (Program.Gerenciador.TodosOsPedidos().SelectMany(p => p.Lanches).Any(t => t.Id == lancheSelecionado.Id))
+                        MessageBox.Show("Não é possível excluir um lanche já cadastrado em um pedido.");
                     else
                     {
-                        MessageBox.Show("Ocorreu um problema ao remover o lanche");
+                        var validacao = Program.Gerenciador.RemoverLanche(lancheSelecionado);
+                        if (validacao.Valido)
+                        {
+                            MessageBox.Show("Lanche removido com sucesso");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocorreu um problema ao remover o lanche");
+                        }
                     }
                     CarregaLanches();
-
                 }
 
             }

@@ -40,7 +40,7 @@ namespace Foodtruck.Grafico
             }
             novoLanche.Id = Convert.ToInt64(tbId.Text);
             novoLanche.Nome = tbNome.Text;
-            novoLanche.Valor = Convert.ToInt64(tbValor.Text);
+            novoLanche.Valor = Convert.ToDecimal(tbValor.Text);
             Validacao validacao;
             if (LancheSelecionado == null)
             {

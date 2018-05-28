@@ -39,13 +39,13 @@ namespace Foodtruck.Grafico
                 novaBebida.Id = value;
             }
             else
-           {
-               novaBebida.Id = -1;
+            {
+                novaBebida.Id = -1;
             }
             novaBebida.Id = Convert.ToInt64(tbId.Text);
             novaBebida.Nome = tbNome.Text;
             novaBebida.Tamanho = Convert.ToInt64(tbTamanho.Text);
-            novaBebida.Valor = Convert.ToInt64(tbValor.Text);
+            novaBebida.Valor = Convert.ToDecimal(tbValor.Text);
             Validacao validacao;
             if (BebidaSelecionada == null)
             {

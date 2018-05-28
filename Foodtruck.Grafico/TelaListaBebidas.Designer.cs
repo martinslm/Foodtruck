@@ -84,6 +84,7 @@
             this.dgBebidas.Name = "dgBebidas";
             this.dgBebidas.Size = new System.Drawing.Size(376, 207);
             this.dgBebidas.TabIndex = 3;
+            this.dgBebidas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgBebidas_CellContentClick);
             // 
             // Id
             // 

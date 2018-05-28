@@ -75,17 +75,21 @@ namespace Foodtruck.Grafico
                 if (resultado == DialogResult.OK)
                 {
                     Bebida bebidaSelecionada = (Bebida)dgBebidas.SelectedRows[0].DataBoundItem;
-                    var validacao = Program.Gerenciador.RemoverBebida(bebidaSelecionada);
-                    if (validacao.Valido)
-                    {
-                        MessageBox.Show("Bebida removida com sucesso");
-                    }
+                    if (Program.Gerenciador.TodosOsPedidos().SelectMany(p => p.Bebidas).Any(t => t.Id == bebidaSelecionada.Id))
+                        MessageBox.Show("Não é possível excluir um lanche já cadastrado em um pedido.");
                     else
                     {
-                        MessageBox.Show("Ocorreu um problema ao remover a bebida");
+                        var validacao = Program.Gerenciador.RemoverBebida(bebidaSelecionada);
+                        if (validacao.Valido)
+                        {
+                            MessageBox.Show("Bebida removida com sucesso");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocorreu um problema ao remover a bebida");
+                        }
                     }
                     CarregarBebidas();
-
                 }
 
             }
